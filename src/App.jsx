@@ -6,6 +6,43 @@ import styles from './App.module.css'
 
 import "./global.css"
 
+// author: { avatarUrl: str, name: str, role: str }
+// publishedAt: Date
+// content: str
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/felipesiqg.png',
+      name: 'Felipe Siqueira',
+      role: 'Web Developer @Nowhere'
+    },
+    content: [
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'link', content: 'jane.design/doctorcare', urlLink: 'http://github.com'},
+      {type: 'link', content: '#novoprojeto', urlLink: 'http://google.com'}
+    ],
+    publishedAt: new Date('2022-06-30 20:00:00')
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/diego3g.png',
+      name: 'Diego Fernandes',
+      role: 'CTO @Rocketseat'
+    },
+    content: [
+      {type: 'paragraph', content: 'Eu também acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'link', content: 'jane.design/doctorcare', urlLink: 'http://tesla.com'},
+      {type: 'link', content: '#novoprojeto', urlLink: 'http://meta.com'}
+    ],
+    publishedAt: new Date('2022-06-29 19:40:00')
+  },
+]
+
 function App() {
   return (
     <div>
@@ -14,14 +51,15 @@ function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post 
-          author="Felipe Siqueira"
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quasi earum laudantium quas voluptatum consequatur harum praesentium ipsam nulla labore fugit quisquam, voluptas aliquam, maiores aperiam amet vitae minus! Dolorum."
-          />
-          <Post 
-            author="Diego Fernandes"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eaque obcaecati ad quae maiores. Temporibus dolor unde facilis esse laborum quod nihil, hic necessitatibus reprehenderit quaerat harum distinctio aspernatur autem?"
-          />
+          {posts.map(post => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
 
